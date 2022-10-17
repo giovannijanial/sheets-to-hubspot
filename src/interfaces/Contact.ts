@@ -1,6 +1,7 @@
 interface IContact {
-	companyName: string;
-	fullName: string;
+	company: string;
+	firsname: string;
+	lastname: string;
 	email: string;
 	phone: string;
 	website: string;

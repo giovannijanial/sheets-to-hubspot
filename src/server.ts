@@ -1,10 +1,11 @@
+import * as dotenv from "dotenv";
+dotenv.config();
 import express, { NextFunction, Request, Response } from "express";
 import { route } from "./routes";
 import { AppError } from "./utils/errors/AppError";
 
-const port = 3000;
-
 const app = express();
+const port = process.env.PORT;
 
 app.use(express.json());
 app.use(express.static("json"));

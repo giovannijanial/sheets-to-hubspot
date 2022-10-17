@@ -1,14 +1,12 @@
-import axios, { AxiosError } from "axios";
-import { IContact } from "../../interfaces/Contact";
+import { Client } from "@hubspot/api-client";
+import { SimplePublicObjectInput } from "@hubspot/api-client/lib/codegen/crm/contacts";
 import { AppError } from "../../utils/errors/AppError";
-import * as hubspot from "@hubspot/api-client";
-const TOKEN = "pat-na1-595e6a85-6362-4e34-b8dc-bd43569ede0c";
-const hubspotClient = new hubspot.Client({
-	accessToken: TOKEN,
+const hubspotClient = new Client({
+	accessToken: process.env.TOKEN,
 });
 
 class GetAllContactUseCase {
-	async execute(): Promise<any> {
+	async execute(): Promise<SimplePublicObjectInput[]> {
 		try {
 			const res = await hubspotClient.crm.contacts.basicApi.getPage();
 

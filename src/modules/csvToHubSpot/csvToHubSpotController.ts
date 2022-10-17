@@ -1,14 +1,14 @@
-import axios, { AxiosError } from "axios";
 import { Request, Response } from "express";
-import { AppError } from "../../utils/errors/AppError";
 import { CsvToHubSpotUseCase } from "./csvToHubSpotUseCase";
 
 class CsvToHubSpotController {
-	handle(req: Request, res: Response) {
-		const csvToHubSpotUseCase = new CsvToHubSpotUseCase();
-		const result = csvToHubSpotUseCase.execute();
+	async handle(req: Request, res: Response) {
+		const file = req.file as Express.Multer.File;
 
-		return res.send({ result });
+		const csvToHubSpotUseCase = new CsvToHubSpotUseCase();
+		const result = await csvToHubSpotUseCase.execute(file);
+
+		return res.send(result);
 	}
 }
 
