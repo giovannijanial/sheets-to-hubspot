@@ -8,7 +8,7 @@ const hubspotClient = new Client({
 	accessToken: process.env.TOKEN,
 });
 
-class CsvToHubSpotUseCase {
+class SheetToHubSpotUseCase {
 	async execute(file: Express.Multer.File): Promise<SimplePublicObjectInput[]> {
 		if (!file) {
 			throw new AppError("No content!");
@@ -39,4 +39,4 @@ class CsvToHubSpotUseCase {
 	}
 }
 
-export { CsvToHubSpotUseCase };
+export { SheetToHubSpotUseCase };

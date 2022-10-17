@@ -1,15 +1,15 @@
 import { Router } from "express";
 import multer from "multer";
-import { CsvToHubSpotController } from "../modules/csvToHubSpot/csvToHubSpotController";
+import { SheetToHubSpotController } from "../modules/sheetToHubSpot/sheetToHubSpotController";
 import { GetAllContactController } from "../modules/getContact/getAllContactController";
 
 const route = Router();
 const multerConfig = multer();
 
 const getAllContactController = new GetAllContactController();
-const csvToHubSpotController = new CsvToHubSpotController();
+const sheetToHubSpotController = new SheetToHubSpotController();
 
-route.post("/", multerConfig.single("file"), csvToHubSpotController.handle);
+route.post("/", multerConfig.single("file"), sheetToHubSpotController.handle);
 
 route.get("/", getAllContactController.handle);
 
